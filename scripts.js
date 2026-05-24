@@ -54,6 +54,31 @@ function addBookToLibrary() {
 	const newBook = new Book(name, author);
 	library.push(newBook);
 	alert("The book is added to the library");
+	return newBook;
 }
 
-addBtnEl.addEventListener("click", addBookToLibrary);
+function displayAddedBook(book) {
+	const idx = document.querySelectorAll(".book-row").length;
+	const tableRowEl = document.createElement("tr");
+	tableRowEl.classList.add("book-row");
+	booksTableEl.appendChild(tableRowEl);
+	const tableIdxEl = document.createElement("td");
+	tableIdxEl.classList.add("book-idx");
+	tableIdxEl.innerText = idx + 1;
+	tableRowEl.appendChild(tableIdxEl);
+	const tableNameEl = document.createElement("td");
+	tableNameEl.classList.add("book-name");
+	tableNameEl.innerText = book.name;
+	tableRowEl.appendChild(tableNameEl);
+	const tableAuthorEl = document.createElement("td");
+	tableAuthorEl.classList.add("book-author");
+	tableAuthorEl.innerText = book.author;
+	tableRowEl.appendChild(tableAuthorEl);
+}
+
+addBtnEl.addEventListener("click", () => {
+	const newBook = addBookToLibrary();
+	if (newBook) {
+		displayAddedBook(newBook);
+	}
+});
