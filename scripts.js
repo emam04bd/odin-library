@@ -17,6 +17,7 @@ function Book(title, author, noOfPages, status) {
 
 const library = [
 	// Demo data
+	// id, title, author, nop, status
 	{
 		id: 1,
 		title: "Book1",
@@ -66,10 +67,13 @@ function displayAvailableBooks() {
 displayAvailableBooks();
 
 function getNewBook() {
-	const title = prompt("Title:");
-	const author = prompt("Author:");
-	const noOfPages = prompt("No of pages:");
-	const status = prompt("Status:");
+	const bookInfoEls = document.querySelectorAll(".book-info");
+
+	// improvement needed
+	const title = bookInfoEls[0].value;
+	const author = bookInfoEls[1].value;
+	const noOfPages = bookInfoEls[2].value;
+	const status = bookInfoEls[3].value;
 
 	const newBook = new Book(title, author, noOfPages, status);
 	for (let key in newBook) {
@@ -78,6 +82,11 @@ function getNewBook() {
 			return;
 		}
 	}
+
+	bookInfoEls.forEach((el) => {
+		el.value = "";
+	});
+
 	return newBook;
 }
 
@@ -90,7 +99,19 @@ function addNewBook() {
 	const newBook = getNewBook();
 	if (newBook) {
 		library.push(newBook);
-		alert("The book is added to the library");
 		displayAddedBook(newBook);
 	}
 }
+
+const addBtnEl = document.querySelector("#add-btn");
+addBtnEl.addEventListener("click", addNewBook);
+
+const asideEl = document.querySelector("aside");
+const newBookBtnEl = document.querySelector("#new-book-btn");
+const closeBtnEl = document.querySelector("#close-btn");
+newBookBtnEl.addEventListener("click", () => {
+	asideEl.classList.remove("hide");
+});
+closeBtnEl.addEventListener("click", () => {
+	asideEl.classList.add("hide");
+});

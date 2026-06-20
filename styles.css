@@ -1,3 +1,22 @@
-body {
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 	/* outline: 1px solid #000; */
+}
+
+body {
+	position: relative;
+}
+
+.hide {
+	display: none;
+}
+
+aside {
+	position: fixed;
+	top: 0px;
+	left: 70%;
+	height: 100vh;
+	border-left: 2px solid black;
 }
