@@ -10,7 +10,6 @@ class Book {
 	}
 }
 
-// TODO: Add UI for this function.
 Book.prototype.changeStatus = function (newStatus) {
 	this.status = newStatus;
 };
@@ -60,24 +59,20 @@ function displayRow(book) {
 	deleteBtnEl.type = "button";
 	deleteBtnEl.innerText = "delete";
 	deleteBtnEl.dataset.id = book.id;
-	// deleteBtnEl.classList.add("delete-book");
 	tableRowEl.appendChild(deleteBtnEl);
 	deleteBtnEl.addEventListener("click", () => {
-		// const id = this.dataset.id;
 		const id = book.id;
 		const elements = document.querySelectorAll(`[data-id="${id}"]`);
 		elements.forEach((element) => {
 			element.remove();
 		});
 		const library_idx = library.findIndex((ele) => ele.id == id);
-		// console.log(library_idx);
 		library.splice(library_idx, 1);
 	});
 }
 
 function displayAvailableBooks() {
 	if (library.length == 0) {
-		// TODO: show a message saying the library is empty.
 		return;
 	}
 	library.forEach((book) => {
@@ -90,7 +85,6 @@ displayAvailableBooks();
 function getNewBook() {
 	const bookInfoEls = document.querySelectorAll(".book-info");
 
-	// improvement needed
 	const title = bookInfoEls[0].value;
 	const author = bookInfoEls[1].value;
 	const noOfPages = bookInfoEls[2].value;
@@ -119,11 +113,9 @@ function addNewBook() {
 	}
 }
 
-// Add button click
 const addBtnEl = document.querySelector("#add-btn");
 addBtnEl.addEventListener("click", addNewBook);
 
-// Show and hide sidebar
 const asideEl = document.querySelector("aside");
 const newBookBtnEl = document.querySelector("#new-book-btn");
 const closeBtnEl = document.querySelector("#close-btn");
