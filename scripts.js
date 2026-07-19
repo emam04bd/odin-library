@@ -1,14 +1,13 @@
 const booksTableEl = document.querySelector(".books-table");
 
-function Book(title, author, noOfPages, status) {
-	if (!new.target) {
-		throw Error(`Didn't use 'new' operator!`);
+class Book {
+	constructor(title, author, noOfPages, status) {
+		this.id = self.crypto.randomUUID();
+		this.title = title;
+		this.author = author;
+		this.noOfPages = noOfPages;
+		this.status = status;
 	}
-	this.id = self.crypto.randomUUID();
-	this.title = title;
-	this.author = author;
-	this.noOfPages = noOfPages;
-	this.status = status;
 }
 
 // TODO: Add UI for this function.
