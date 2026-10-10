@@ -7,16 +7,78 @@
 
 body {
 	position: relative;
+	padding: 10px;
 }
 
-.hide {
+input,
+select,
+button {
+	font-size: 1rem;
+	background-color: inherit;
+}
+
+input,
+select {
+	padding: 3px;
+}
+
+button {
+	padding: 5px;
+	border-radius: 10%;
+}
+
+.book-list {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	gap: 20px;
+}
+
+.snippet {
+	padding: 10px;
+	border: 1px solid #000;
+	border-radius: 10%;
+}
+
+.snippet > * {
+	margin: 10px;
+}
+
+#new-book-btn > .plus {
+	font-size: 50px;
+	font-weight: 300;
+}
+
+.book-form {
+	width: 100%;
+	padding: 30px;
+	border-top: 1px solid #000;
+	border-radius: 10% 10% 0 0;
+	background-color: #fff;
+	box-shadow: 0 0 10px 2px #00000088;
+
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+.book-form > * {
+	margin: 10px;
+}
+
+.snippet > button,
+.book-form > button {
+	width: 80px;
+}
+
+.display-none {
 	display: none;
 }
 
-aside {
+/* aside {
 	position: fixed;
 	top: 0px;
 	left: 70%;
 	height: 100vh;
 	border-left: 2px solid black;
-}
+} */

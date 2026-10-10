@@ -1,18 +1,20 @@
-const booksTableEl = document.querySelector(".books-table");
+const bookListEl = document.querySelector(".book-list");
 
-class Book {
-	constructor(title, author, noOfPages, status) {
-		this.id = self.crypto.randomUUID();
-		this.title = title;
-		this.author = author;
-		this.noOfPages = noOfPages;
-		this.status = status;
+function Book(title, author, noOfPages, status) {
+	if (!new.target) {
+		throw Error(
+			"You must use the 'new' operator to call the Book constructor",
+		);
 	}
+	this.id = self.crypto.randomUUID();
+	this.title = title;
+	this.author = author;
+	this.noOfPages = noOfPages;
+	this.status = status;
+	this.changeStatus = function (newStatus) {
+		this.status = newStatus;
+	};
 }
-
-Book.prototype.changeStatus = function (newStatus) {
-	this.status = newStatus;
-};
 
 const book1 = new Book("Book1", "Author1", 123, "read");
 const book2 = new Book("Book2", "Author2", 234, "unread");
@@ -20,25 +22,27 @@ const book3 = new Book("Book3", "Author3", 345, "read");
 
 const library = [book1, book2, book3];
 
-function displayRow(book) {
-	const tableRowEl = document.createElement("tr");
-	tableRowEl.classList.add("book-row");
-	booksTableEl.appendChild(tableRowEl);
+function displayBook(book) {
+	const bookSnippetEl = document.createElement("section");
+	bookSnippetEl.dataset.id = book.id;
+	bookSnippetEl.classList.add("snippet");
+	bookListEl.appendChild(bookSnippetEl);
+
 	const bookDetails = ["title", "author", "noOfPages"];
 
 	for (let x of bookDetails) {
-		const tableDataEl = document.createElement("td");
-		tableDataEl.dataset.id = book.id;
-		tableDataEl.classList.add(`book-${x}`);
-		tableDataEl.innerText = book[x];
-		tableRowEl.appendChild(tableDataEl);
+		const bookDataEl = document.createElement("div");
+		bookDataEl.dataset.id = book.id; // check if this is necessary
+		bookDataEl.classList.add(`book-${x}`);
+		bookDataEl.innerText = book[x];
+		bookSnippetEl.appendChild(bookDataEl);
 	}
 
 	const changeStatusBtn = document.createElement("button");
 	changeStatusBtn.type = "button";
 	changeStatusBtn.innerText = book.status;
 	changeStatusBtn.dataset.id = book.id;
-	tableRowEl.appendChild(changeStatusBtn);
+	bookSnippetEl.appendChild(changeStatusBtn);
 	changeStatusBtn.addEventListener("click", function () {
 		const currentStatus = book.status;
 		let newStatus = undefined;
@@ -52,14 +56,14 @@ function displayRow(book) {
 				ele.changeStatus(newStatus);
 			}
 		});
-		this.innerText = newStatus;
+		this.textContent = newStatus;
 	});
 
 	const deleteBtnEl = document.createElement("button");
 	deleteBtnEl.type = "button";
 	deleteBtnEl.innerText = "delete";
 	deleteBtnEl.dataset.id = book.id;
-	tableRowEl.appendChild(deleteBtnEl);
+	bookSnippetEl.appendChild(deleteBtnEl);
 	deleteBtnEl.addEventListener("click", () => {
 		const id = book.id;
 		const elements = document.querySelectorAll(`[data-id="${id}"]`);
@@ -76,7 +80,7 @@ function displayAvailableBooks() {
 		return;
 	}
 	library.forEach((book) => {
-		displayRow(book);
+		displayBook(book);
 	});
 }
 
@@ -109,19 +113,19 @@ function addNewBook() {
 	const newBook = getNewBook();
 	if (newBook) {
 		library.push(newBook);
-		displayRow(newBook);
+		displayBook(newBook);
 	}
 }
 
 const addBtnEl = document.querySelector("#add-btn");
 addBtnEl.addEventListener("click", addNewBook);
 
-const asideEl = document.querySelector("aside");
+const formEl = document.querySelector("form");
 const newBookBtnEl = document.querySelector("#new-book-btn");
 const closeBtnEl = document.querySelector("#close-btn");
 newBookBtnEl.addEventListener("click", () => {
-	asideEl.classList.remove("hide");
+	formEl.classList.remove("display-none");
 });
 closeBtnEl.addEventListener("click", () => {
-	asideEl.classList.add("hide");
+	formEl.classList.add("display-none");
 });
