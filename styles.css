@@ -66,9 +66,44 @@ button {
 	margin: 10px;
 }
 
+.book-form input,
+.book-form select {
+	width: 250px;
+}
+
+/* .book-info:valid {
+	border: 1px solid green;
+}
+.book-info:invalid {
+	border: 1px solid red;
+} */
+
+tr > :nth-child(1),
+tr > :nth-child(2) {
+	padding: 3px 8px;
+}
+
+td {
+	text-align: left;
+	vertical-align: top;
+}
+
+table div {
+	font-size: 0.8rem;
+	width: 250px;
+	background-color: #911;
+	color: #fff;
+	padding: 8px;
+}
+
 .snippet > button,
 .book-form > button {
 	width: 80px;
+}
+
+#add-btn {
+	background-color: #050;
+	color: #fff;
 }
 
 .display-none {

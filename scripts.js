@@ -61,7 +61,7 @@ function displayBook(book) {
 
 	const deleteBtnEl = document.createElement("button");
 	deleteBtnEl.type = "button";
-	deleteBtnEl.innerText = "delete";
+	deleteBtnEl.textContent = "Remove";
 	deleteBtnEl.dataset.id = book.id;
 	bookSnippetEl.appendChild(deleteBtnEl);
 	deleteBtnEl.addEventListener("click", () => {
@@ -86,31 +86,9 @@ function displayAvailableBooks() {
 
 displayAvailableBooks();
 
-function getNewBook() {
-	const bookInfoEls = document.querySelectorAll(".book-info");
-
-	const title = bookInfoEls[0].value;
-	const author = bookInfoEls[1].value;
-	const noOfPages = bookInfoEls[2].value;
-	const status = bookInfoEls[3].value;
-
-	const newBook = new Book(title, author, noOfPages, status);
-	for (let key in newBook) {
-		if (newBook[key] == "") {
-			alert(`${key} is empty`);
-			return;
-		}
-	}
-
-	bookInfoEls.forEach((el) => {
-		el.value = "";
-	});
-
-	return newBook;
-}
-
 function addNewBook() {
-	const newBook = getNewBook();
+	// todo
+	const newBook = new Book(getBookData());
 	if (newBook) {
 		library.push(newBook);
 		displayBook(newBook);
@@ -118,14 +96,27 @@ function addNewBook() {
 }
 
 const addBtnEl = document.querySelector("#add-btn");
-addBtnEl.addEventListener("click", addNewBook);
+addBtnEl.addEventListener("click", addNewBook); // todo
 
 const formEl = document.querySelector("form");
 const newBookBtnEl = document.querySelector("#new-book-btn");
-const closeBtnEl = document.querySelector("#close-btn");
+const cancelBtnEl = document.querySelector("#cancel-btn");
 newBookBtnEl.addEventListener("click", () => {
 	formEl.classList.remove("display-none");
 });
-closeBtnEl.addEventListener("click", () => {
+cancelBtnEl.addEventListener("click", () => {
 	formEl.classList.add("display-none");
+});
+
+const bookInfoEls = document.querySelectorAll(".book-info");
+
+const titleEl = bookInfoEls[0];
+const authorEl = bookInfoEls[1];
+const noOfPagesEl = bookInfoEls[2];
+const statusEl = bookInfoEls[3];
+
+titleEl.addEventListener("input", () => {
+	if (!titleEl.validity.valid) {
+		titleEl.reportValidity();
+	}
 });

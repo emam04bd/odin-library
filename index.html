@@ -15,39 +15,79 @@
 		</section>
 		<form class="book-form display-none">
 			<h2>New Book</h2>
-			<label for="book-title">Title: </label>
-			<input
-				class="book-info"
-				type="text"
-				name="book-title"
-				id="book-title"
-			/>
-			<br />
-			<label for="book-author">Author: </label>
-			<input
-				class="book-info"
-				type="text"
-				name="book-author"
-				id="book-author"
-			/>
-			<br />
-			<label for="book-nop">No of pages: </label>
-			<input
-				class="book-info"
-				type="text"
-				name="book-nop"
-				id="book-nop"
-			/>
-			<br />
-			<label for="book-status">Status: </label>
-			<select class="book-info" name="book-status" id="book-status">
-				<option value="">Select book status</option>
-				<option value="read">Read</option>
-				<option value="reading">Reading</option>
-			</select>
-			<br />
+			<table>
+				<tr class="book-title">
+					<td>
+						<label for="book-title-ip">Title</label>
+					</td>
+					<td>:</td>
+					<td>
+						<input
+							class="book-info"
+							type="text"
+							name="book-title"
+							id="book-title-ip"
+							maxlength="100"
+							required
+						/>
+						<div class="error display-none"></div>
+					</td>
+				</tr>
+				<tr class="book-author">
+					<td>
+						<label for="book-author-ip">Author</label>
+					</td>
+					<td>:</td>
+					<td>
+						<input
+							class="book-info"
+							type="text"
+							name="book-author"
+							id="book-author-ip"
+							maxlength="100"
+							required
+						/>
+						<div class="error display-none"></div>
+					</td>
+				</tr>
+				<tr class="book-nop">
+					<td>
+						<label for="book-nop-ip">No of pages</label>
+					</td>
+					<td>:</td>
+					<td>
+						<input
+							class="book-info"
+							type="number"
+							name="book-nop"
+							id="book-nop-ip"
+							min="2"
+							max="10000"
+							required
+						/>
+						<div class="error display-none"></div>
+					</td>
+				</tr>
+				<tr class="book-status">
+					<td>
+						<label for="book-status-ip">Status</label>
+					</td>
+					<td>:</td>
+					<td>
+						<select
+							class="book-info"
+							name="book-status"
+							id="book-status-ip"
+						>
+							<option value="read">Read</option>
+							<option value="reading" selected>Reading</option>
+						</select>
+						<div class="error display-none"></div>
+					</td>
+				</tr>
+			</table>
 			<button type="button" id="add-btn">Add</button>
-			<button type="button" id="close-btn">Close</button>
+			<button type="button" id="cancel-btn">Cancel</button>
 		</form>
 	</body>
 	<script src="scripts.js"></script>
