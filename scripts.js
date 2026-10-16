@@ -171,7 +171,6 @@ const statusIpEl = statusIpConEls.querySelector("select");
 console.log(statusIpEl);
 
 function addNewBook(title, author, nop, status) {
-	// todo
 	const newBook = new Book(title, author, nop, status);
 	if (newBook) {
 		library.push(newBook);
