@@ -16,71 +16,74 @@
 		<form class="book-form display-none">
 			<h2>New Book</h2>
 			<table>
-				<tr class="book-title">
+				<tr class="book-title-ip-row">
 					<td>
 						<label for="book-title-ip">Title</label>
 					</td>
 					<td>:</td>
-					<td>
+					<td class="input-container">
 						<input
 							class="book-info"
 							type="text"
 							name="book-title"
 							id="book-title-ip"
-							maxlength="100"
+							placeholder="Arkham Asylum"
 							required
 						/>
 						<div class="error display-none"></div>
 					</td>
 				</tr>
-				<tr class="book-author">
+				<tr class="book-author-ip-row">
 					<td>
 						<label for="book-author-ip">Author</label>
 					</td>
 					<td>:</td>
-					<td>
+					<td class="input-container">
 						<input
 							class="book-info"
 							type="text"
 							name="book-author"
 							id="book-author-ip"
-							maxlength="100"
+							placeholder="James Gordon"
 							required
 						/>
 						<div class="error display-none"></div>
 					</td>
 				</tr>
-				<tr class="book-nop">
+				<tr class="book-nop-ip-row">
 					<td>
 						<label for="book-nop-ip">No of pages</label>
 					</td>
 					<td>:</td>
-					<td>
+					<td class="input-container">
 						<input
 							class="book-info"
 							type="number"
 							name="book-nop"
 							id="book-nop-ip"
-							min="2"
-							max="10000"
-							required
+							min="1"
+							placeholder="295"
 						/>
 						<div class="error display-none"></div>
 					</td>
 				</tr>
-				<tr class="book-status">
+				<tr class="book-status-ip-row">
 					<td>
 						<label for="book-status-ip">Status</label>
 					</td>
 					<td>:</td>
-					<td>
+					<td class="input-container">
 						<select
 							class="book-info"
 							name="book-status"
 							id="book-status-ip"
+							required
 						>
-							<option value="read">Read</option>
-							<option value="reading" selected>Reading</option>
+							<option value="Not Started" selected>
+								Not Started
+							</option>
+							<option value="Reading">Reading</option>
+							<option value="Complete">Complete</option>
 						</select>
 						<div class="error display-none"></div>
 					</td>

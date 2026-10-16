@@ -14,7 +14,7 @@ input,
 select,
 button {
 	font-size: 1rem;
-	background-color: inherit;
+	/* background-color: inherit; */
 }
 
 input,
@@ -66,6 +66,10 @@ button {
 	margin: 10px;
 }
 
+.book-form > h2 {
+	margin: 20px;
+}
+
 .book-form input,
 .book-form select {
 	width: 250px;
@@ -102,6 +106,7 @@ table div {
 }
 
 #add-btn {
+	margin-left: 20px;
 	background-color: #050;
 	color: #fff;
 }
@@ -109,11 +114,3 @@ table div {
 .display-none {
 	display: none;
 }
-
-/* aside {
-	position: fixed;
-	top: 0px;
-	left: 70%;
-	height: 100vh;
-	border-left: 2px solid black;
-} */
